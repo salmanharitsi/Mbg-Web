@@ -56,7 +56,7 @@ export default function TujuanSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="tujuan" ref={ref} className="relative py-24 bg-white overflow-hidden">
+    <section id="tujuan" ref={ref} className="relative py-10 bg-white overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-linear-to-t from-gray-50/50 to-transparent" />
