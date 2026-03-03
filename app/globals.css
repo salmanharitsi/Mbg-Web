@@ -1,26 +1,138 @@
+/* ─── Google Fonts ────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ─── Fonts ─────────────────────────────── */
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body:    "DM Sans", sans-serif;
+
+  /* ─── Primary (hijau) ───────────────────── */
+  --color-primary-50:      #f0fdf4;
+  --color-primary-100:     #dcfce7;
+  --color-primary-200:     #bbf7d0;
+  --color-primary-300:     #86efac;
+  --color-primary-400:     #4ade80;
+  --color-primary-500:     #16a34a;
+  --color-primary-600:     #15803d;
+  --color-primary-700:     #166534;
+  --color-primary-800:     #14532d;
+  --color-primary-900:     #052e16;
+  --color-primary-950:     #021a0c;
+  --color-primary:         #16a34a;
+
+  /* ─── Secondary (emas) ──────────────────── */
+  --color-secondary-50:    #fefce8;
+  --color-secondary-100:   #fef9c3;
+  --color-secondary-200:   #fef08a;
+  --color-secondary-300:   #fde047;
+  --color-secondary-400:   #facc15;
+  --color-secondary-500:   #eab308;
+  --color-secondary-600:   #ca8a04;
+  --color-secondary-700:   #a16207;
+  --color-secondary-800:   #854d0e;
+  --color-secondary-900:   #422006;
+  --color-secondary:       #eab308;
+
+  /* ─── Custom background gradients ──────── */
+  --background-hero-gradient: linear-gradient(135deg, #021a0c 0%, #14532d 30%, #166534 60%, #15803d 100%);
+
+  /* ─── Custom shadows ────────────────────── */
+  --shadow-glass:      0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.15);
+  --shadow-glass-hover:0 16px 48px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.2);
+  --shadow-card-hover: 0 20px 60px rgba(22,163,74,0.25);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Base ────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: #f8fdf9;
+  color: #1a1a1a;
+  overflow-x: hidden;
 }
+
+/* ─── Custom utilities ────────────────────── */
+@utility glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@utility glass-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(22, 163, 74, 0.08);
+}
+
+@utility glass-dark {
+  background: rgba(5, 46, 22, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, #16a34a 0%, #4ade80 50%, #eab308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(135deg, #ca8a04 0%, #eab308 50%, #fde047 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Marquee ─────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* ─── Noise overlay ───────────────────────── */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* ─── Font utilities ──────────────────────── */
+@utility font-display {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+@utility font-body {
+  font-family: "DM Sans", sans-serif;
+}
+
+/* ─── Hero gradient background ───────────── */
+@utility bg-hero-gradient {
+  background-image: linear-gradient(135deg, #021a0c 0%, #14532d 30%, #166534 60%, #15803d 100%);
+}
+
+/* ─── Float animation ─────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.float-animation { animation: float 4s ease-in-out infinite; }
