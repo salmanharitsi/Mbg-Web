@@ -112,13 +112,19 @@ function TimelineItem({
         <motion.div
           initial={{ scale: 0 }}
           animate={isInView ? { scale: 1 } : {}}
-          transition={{ delay: index * 0.08 + 0.2, type: "spring", stiffness: 200 }}
+          transition={{
+            delay: index * 0.08 + 0.2,
+            type: "spring",
+            stiffness: 200,
+          }}
           className={`w-4 h-4 rounded-full border-2 border-white shadow-md shrink-0 z-10 ${cfg.dotColor} ${
             item.highlight ? "ring-4 ring-primary-200 animate-pulse" : ""
           }`}
         />
         {!isLast && (
-          <div className={`w-0.5 flex-1 mt-1 ${cfg.lineColor} opacity-40 min-h-10`} />
+          <div
+            className={`w-0.5 flex-1 mt-1 ${cfg.lineColor} opacity-40 min-h-10`}
+          />
         )}
       </div>
 
@@ -126,12 +132,14 @@ function TimelineItem({
       <div
         className={`pb-8 flex-1 ${
           item.highlight
-            ? "bg-linear-to-br from-primary-50 to-primary-100/50 border border-primary-200 rounded-2xl p-5 -mt-1 mb-2 shadow-sm"
+            ? "shimmer-highlight bg-linear-to-br from-primary-50 to-primary-100/50 border border-primary-200 rounded-2xl p-6 -mt-1 mb-7 shadow-sm"
             : ""
         }`}
       >
         <div className="flex flex-wrap items-center gap-2 mb-1.5">
-          <span className={`font-display font-semibold text-xs ${cfg.textColor}`}>
+          <span
+            className={`font-display font-semibold text-xs ${cfg.textColor}`}
+          >
             {item.date}
           </span>
           <span
@@ -139,8 +147,8 @@ function TimelineItem({
               item.status === "done"
                 ? "bg-primary-100 text-primary-700"
                 : item.status === "ongoing"
-                ? "bg-secondary-100 text-secondary-700"
-                : "bg-gray-100 text-gray-500"
+                  ? "bg-secondary-100 text-secondary-700"
+                  : "bg-gray-100 text-gray-500"
             }`}
           >
             <cfg.icon size={9} />
@@ -152,8 +160,12 @@ function TimelineItem({
             </span>
           )}
         </div>
-        <h3 className="font-display font-bold text-gray-900 text-base mb-1.5">{item.title}</h3>
-        <p className="text-gray-500 font-body text-sm leading-relaxed">{item.desc}</p>
+        <h3 className="font-display font-bold text-gray-900 text-base mb-1.5">
+          {item.title}
+        </h3>
+        <p className="text-gray-500 font-body text-sm leading-relaxed">
+          {item.desc}
+        </p>
       </div>
     </motion.div>
   );
@@ -164,7 +176,11 @@ export default function TimelineSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="timeline" ref={ref} className="relative py-24 bg-gray-50 overflow-hidden">
+    <section
+      id="timeline"
+      ref={ref}
+      className="relative py-24 bg-gray-50 overflow-hidden"
+    >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary-200 to-transparent" />
         <div className="absolute top-20 right-0 w-80 h-80 rounded-full bg-primary-100/50 blur-3xl" />
@@ -189,8 +205,7 @@ export default function TimelineSection() {
             className="font-display font-extrabold text-primary-950 leading-tight"
             style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)" }}
           >
-            Timeline{" "}
-            <span className="text-gradient">Program MBG</span>
+            Timeline <span className="text-gradient">Program MBG</span>
           </h2>
           <p className="mt-4 text-gray-500 font-body max-w-xl mx-auto">
             Perjalanan program Makan Bergizi Gratis dari perencanaan hingga
@@ -208,7 +223,9 @@ export default function TimelineSection() {
           {Object.entries(statusConfig).map(([key, cfg]) => (
             <div key={key} className="flex items-center gap-1.5">
               <div className={`w-2.5 h-2.5 rounded-full ${cfg.dotColor}`} />
-              <span className="text-xs text-gray-500 font-body">{cfg.label}</span>
+              <span className="text-xs text-gray-500 font-body">
+                {cfg.label}
+              </span>
             </div>
           ))}
         </motion.div>
@@ -216,7 +233,12 @@ export default function TimelineSection() {
         {/* Timeline items */}
         <div className="pl-2">
           {milestones.map((item, i) => (
-            <TimelineItem key={item.title} item={item} index={i} isInView={isInView} />
+            <TimelineItem
+              key={item.title}
+              item={item}
+              index={i}
+              isInView={isInView}
+            />
           ))}
         </div>
       </div>
