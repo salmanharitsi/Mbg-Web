@@ -169,7 +169,7 @@ export default function ChartSection() {
         </div>
 
         {/* Summary stats */}
-        <div className="grid grid-cols-3 gap-3 mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
           {[
             {
               icon: School,

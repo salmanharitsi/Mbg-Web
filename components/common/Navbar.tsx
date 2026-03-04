@@ -41,7 +41,7 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-9999 flex justify-center px-4 pt-4"
+        className="fixed top-0 left-0 right-0 z-9998 flex justify-center px-4 pt-4"
       >
         <div
           className={`w-full max-w-6xl rounded-2xl transition-all duration-500 ${scrolled ? "glass-light bg-white/50 backdrop-blur-xs" : "glass"}`}
@@ -179,7 +179,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-72 bg-white shadow-2xl lg:hidden flex flex-col"
+            className="fixed top-0 right-0 bottom-0 z-9999 w-72 bg-white shadow-2xl lg:hidden flex flex-col"
           >
             <div
               className="flex items-center justify-between p-5"
