@@ -41,7 +41,7 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4"
+        className="fixed top-0 left-0 right-0 z-9999 flex justify-center px-4 pt-4"
       >
         <div
           className={`w-full max-w-6xl rounded-2xl transition-all duration-500 ${scrolled ? "glass-light bg-white/50 backdrop-blur-xs" : "glass"}`}
@@ -64,12 +64,12 @@ export default function Navbar() {
               </div>
               <div className="hidden sm:block">
                 <p
-                  className={`font-display font-bold text-sm leading-tight ${scrolled || isSebaran ? "text-primary-800" : "text-white"}`}
+                  className={`font-display font-bold text-sm leading-tight ${scrolled ? "text-primary-800" : "text-white"}`}
                 >
                   Badan Gizi Nasional
                 </p>
                 <p
-                  className={`text-[10px] font-body leading-none ${scrolled || isSebaran ? "text-primary-600" : "text-gray-400"}`}
+                  className={`text-[10px] font-body leading-none ${scrolled ? "text-primary-600" : "text-gray-400"}`}
                 >
                   Program Makan Bergizi Gratis
                 </p>
@@ -115,11 +115,11 @@ export default function Navbar() {
                   href="/"
                   className="hidden sm:flex items-center gap-2 text-sm font-display font-semibold px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105"
                   style={{
-                    color: scrolled || isSebaran ? "#166534" : "white",
-                    backgroundColor: scrolled || isSebaran
+                    color: scrolled ? "#166534" : "white",
+                    backgroundColor: scrolled
                       ? "rgba(22,163,74,0.12)"
                       : "rgba(255,255,255,0.12)",
-                    border: scrolled || isSebaran
+                    border: scrolled
                       ? "1px solid rgba(22,163,74,0.2)"
                       : "1px solid rgba(255,255,255,0.2)",
                   }}
@@ -144,7 +144,7 @@ export default function Navbar() {
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="lg:hidden p-2 rounded-xl transition-colors"
-                style={{ color: scrolled || isSebaran ? "#15803d" : "white" }}
+                style={{ color: scrolled ? "#15803d" : "white" }}
                 aria-label="Toggle menu"
               >
                 {menuOpen ? <X size={22} /> : <Menu size={22} />}
