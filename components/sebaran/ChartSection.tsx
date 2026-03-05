@@ -109,7 +109,7 @@ export default function ChartSection() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden"
+      className="rounded-xl bg-white border border-gray-100 shadow-sm overflow-hidden"
     >
       {/* Header */}
       <div className="px-6 pt-6 pb-4 border-b border-gray-50">
